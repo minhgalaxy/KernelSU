@@ -89,6 +89,8 @@ static bool check_block(struct file *fp, u32 *size4, loff_t *pos, u32 *offset,
 	ksu_kernel_read_compat(fp, size4, 0x4, pos); // certificate length
 	*offset += 0x4 * 2;
 
+	pr_info("expected_size: %d, actual_size: %d\n", expected_size, *size4);
+
 	if (*size4 == expected_size) {
 		*offset += *size4;
 
